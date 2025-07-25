@@ -85,7 +85,7 @@ def generate_qr_image(
     
     return result.images[0]
 
-async def handler(job):
+def handler(job):
     """
     RunPod serverless handler function for QR code generation
     """
