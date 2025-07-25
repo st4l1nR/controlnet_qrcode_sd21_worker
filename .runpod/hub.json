@@ -1,0 +1,131 @@
+{
+  "title": "QR Code AI Art Generator",
+  "description": "Generate artistic images containing functional QR codes using Stable Diffusion 2.1 with ControlNet. Create stunning visuals that seamlessly blend QR codes with artistic elements while maintaining scannability.",
+  "deployment_type": "serverless",
+  "category": "AI Generation",
+  "machine": {
+    "cpu": 4,
+    "memory": 16,
+    "gpu": "NVIDIA RTX A4000",
+    "container_disk": 20
+  },
+  "environment": {
+    "CUDA_VERSION": "11.8",
+    "HF_HOME": "/app/models",
+    "TRANSFORMERS_CACHE": "/app/models",
+    "HF_DATASETS_CACHE": "/app/models"
+  },
+  "presets": [
+    {
+      "name": "Billboard Style",
+      "description": "Generate QR code billboard images for NYC-style advertising",
+      "config": {
+        "prompt": "a billboard in NYC with a qrcode",
+        "guidance_scale": 20,
+        "controlnet_conditioning_scale": 1.5,
+        "strength": 0.9,
+        "num_inference_steps": 150
+      }
+    },
+    {
+      "name": "Artistic QR",
+      "description": "More artistic interpretation with balanced QR code visibility",
+      "config": {
+        "prompt": "artistic qr code design, modern, colorful",
+        "guidance_scale": 15,
+        "controlnet_conditioning_scale": 1.2,
+        "strength": 0.7,
+        "num_inference_steps": 100
+      }
+    },
+    {
+      "name": "High Quality",
+      "description": "Maximum quality generation with longer processing time",
+      "config": {
+        "guidance_scale": 25,
+        "controlnet_conditioning_scale": 1.8,
+        "strength": 0.95,
+        "num_inference_steps": 200
+      }
+    }
+  ],
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "prompt": {
+        "type": "string",
+        "description": "Text prompt describing the desired artistic style",
+        "default": "a billboard in NYC with a qrcode"
+      },
+      "negative_prompt": {
+        "type": "string",
+        "description": "Negative prompt to avoid unwanted elements",
+        "default": "ugly, disfigured, low quality, blurry, nsfw"
+      },
+      "qr_code_url": {
+        "type": "string",
+        "description": "URL to the QR code image to be integrated",
+        "format": "uri"
+      },
+      "init_image_url": {
+        "type": "string",
+        "description": "URL to the initial/reference image",
+        "format": "uri"
+      },
+      "guidance_scale": {
+        "type": "number",
+        "description": "How closely to follow the prompt (higher = more adherence)",
+        "minimum": 1,
+        "maximum": 30,
+        "default": 20
+      },
+      "controlnet_conditioning_scale": {
+        "type": "number",
+        "description": "Strength of QR code preservation (higher = more visible QR)",
+        "minimum": 0.1,
+        "maximum": 2.0,
+        "default": 1.5
+      },
+      "strength": {
+        "type": "number",
+        "description": "How much to transform the initial image",
+        "minimum": 0.1,
+        "maximum": 1.0,
+        "default": 0.9
+      },
+      "num_inference_steps": {
+        "type": "number",
+        "description": "Number of generation steps (higher = better quality, slower)",
+        "minimum": 20,
+        "maximum": 300,
+        "default": 150
+      },
+      "seed": {
+        "type": "integer",
+        "description": "Random seed for reproducible results",
+        "default": 123121231
+      }
+    }
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "success": {
+        "type": "boolean",
+        "description": "Whether the generation was successful"
+      },
+      "image": {
+        "type": "string",
+        "description": "Base64 encoded PNG image"
+      },
+      "format": {
+        "type": "string",
+        "description": "Image format (PNG)"
+      },
+      "error": {
+        "type": "string",
+        "description": "Error message if generation failed"
+      }
+    }
+  }
+}
