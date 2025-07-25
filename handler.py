@@ -85,13 +85,13 @@ def generate_qr_image(
     
     return result.images[0]
 
-def handler(job):
+def handler(event):
     """
     RunPod serverless handler function for QR code generation
     """
     try:
         # Extract input data from the request
-        input_data = job["input"]
+        input_data = event["input"]
         
         # Extract parameters
         prompt = input_data.get('prompt', 'a billboard in NYC with a qrcode')
