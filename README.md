@@ -135,4 +135,3 @@ This project uses the following models:
 
 For issues and questions, please refer to the RunPod documentation or create an issue in the project repository.
 
-[![Runpod](https://api.runpod.io/badge/st4l1nR/controlnet_qrcode_sd21_worker)](https://console.runpod.io/hub/st4l1nR/controlnet_qrcode_sd21_worker)
