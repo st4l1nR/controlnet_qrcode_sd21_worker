@@ -15,12 +15,12 @@ def initialize_models():
     global controlnet, pipe
     
     if controlnet is None:
-        controlnet = ControlNetModel.from_pretrained("DionTimmer/controlnet_qrcode-control_v11p_sd21",
+        controlnet = ControlNetModel.from_pretrained("/runpod-volume/models/controlnet-qr",
                                                      torch_dtype=torch.float16)
     
     if pipe is None:
         pipe = StableDiffusionControlNetImg2ImgPipeline.from_pretrained(
-            "stabilityai/stable-diffusion-2-1",
+            "/runpod-volume/models/sd21",
             controlnet=controlnet,
             safety_checker=None,
             torch_dtype=torch.float16

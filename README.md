@@ -97,6 +97,26 @@ Maximum quality with longer processing:
 
 ## Examples
 
+### Knight Pixel Art Request
+```json
+{
+  "input": {
+    "prompt": "a knight holding a sword on pixel art",
+    "qr_code_url": "https://media.discordapp.net/attachments/1364954116887023618/1398733806852378654/qr-code.png?ex=6887c15e&is=68866fde&hm=c9bec67e7cb236c37c867099035b6057c618ed8ed03f67acc81082eb11947549&=&format=webp&quality=lossless&width=480&height=480",
+    "init_image_url": "https://media.discordapp.net/attachments/1364954116887023618/1398733807108227192/init_image_qr.jpg?ex=6887c15e&is=68866fde&hm=ea6c0ef9b9dc8e891f37d8bf0595a4c49aae18ad99647fa99d1d5c7fe818a2a2&=&format=webp&width=480&height=480"
+  }
+}
+```
+
+**Response:**
+```json
+{
+  "success": true,
+  "image": "iVBORw0KGgoAAAANSUhEUgAAAwAAAAMACAYAAAC6uhUNAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAADh0RVh0U29mdHdhcmUAbWF0cGxvdGxpYiB2ZXJzaW9uMy4xLjMsIGh0dHA6Ly9tYXRwbG90bGliLm9yZy+AADFEAAAgAElEQVR4nOy9eZhlV1k...",
+  "format": "PNG"
+}
+```
+
 ### NYC Billboard
 ```json
 {"input": {"prompt": "a billboard in NYC with a qrcode"}}
@@ -124,6 +144,17 @@ This function is optimized for RunPod serverless deployment with:
 - Memory optimization with CPU offloading
 - CUDA 11.8 compatibility
 - Automatic model downloading during build
+
+### Building and Pushing Docker Image
+
+```bash
+docker buildx build \
+  --platform linux/amd64 \
+  -t st4lin/controlnet_qrcode_sd21_worker:latest \
+  -t st4lin/controlnet_qrcode_sd21_worker:stable \
+  --push \
+  .
+```
 
 ## License
 

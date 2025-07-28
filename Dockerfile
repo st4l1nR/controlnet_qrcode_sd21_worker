@@ -4,11 +4,9 @@ WORKDIR /
 
 # Copy application code
 COPY handler.py .
+COPY requirements.txt .
 
-# Set environment variables for model caching and Python packages (network volume)
-ENV HF_HOME=/runpod-volume
-ENV TRANSFORMERS_CACHE=/runpod-volume
-ENV HF_DATASETS_CACHE=/runpod-volume
-ENV PYTHONPATH=/runpod-volume:$PYTHONPATH
+# Install Python packages
+RUN pip install -r requirements.txt
 
 CMD ["python3", "-u", "/handler.py"]
