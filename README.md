@@ -102,8 +102,8 @@ Maximum quality with longer processing:
 {
   "input": {
     "prompt": "a knight holding a sword on pixel art",
-    "qr_code_url": "https://media.discordapp.net/attachments/1364954116887023618/1398733806852378654/qr-code.png?ex=6887c15e&is=68866fde&hm=c9bec67e7cb236c37c867099035b6057c618ed8ed03f67acc81082eb11947549&=&format=webp&quality=lossless&width=480&height=480",
-    "init_image_url": "https://media.discordapp.net/attachments/1364954116887023618/1398733807108227192/init_image_qr.jpg?ex=6887c15e&is=68866fde&hm=ea6c0ef9b9dc8e891f37d8bf0595a4c49aae18ad99647fa99d1d5c7fe818a2a2&=&format=webp&width=480&height=480"
+    "qr_code_url": "https://media.discordapp.net/attachments/1364954116887023618/1398733806852378654/qr-code.png?ex=688912de&is=6887c15e&hm=fb92911efbcfa3a772bfcaf258e0a393adeb76bd287b4222ae5fe8380050d21f&=&format=webp&quality=lossless&width=480&height=480",
+    "init_image_url": "https://media.discordapp.net/attachments/1364954116887023618/1398733807108227192/init_image_qr.jpg?ex=688912de&is=6887c15e&hm=b77c063c503aaa25c8b06944925a23f9325befff9a924a6803aaeda4c56e7e27&=&format=webp&width=480&height=480"
   }
 }
 ```
@@ -136,6 +136,21 @@ Maximum quality with longer processing:
 ```json
 {"input": {"prompt": "minimal modern qr code design, clean, geometric, white background"}}
 ```
+
+## Environment Variables
+
+For S3 bucket functionality to work with `rp_upload.upload_image()`, configure these environment variables in your RunPod template:
+
+**Required S3 Environment Variables:**
+- `BUCKET_ENDPOINT_URL` - Your S3 bucket endpoint URL
+- `BUCKET_ACCESS_KEY_ID` - S3 access key ID  
+- `BUCKET_SECRET_ACCESS_KEY` - S3 secret access key
+
+**For AWS S3 specifically:**
+- `AWS_ACCESS_KEY_ID` - Your AWS access key
+- `AWS_SECRET_ACCESS_KEY` - Your AWS secret access key
+
+Set these in your RunPod template's Environment Variables section to enable automatic image uploads to your configured S3 bucket.
 
 ## Deployment
 
